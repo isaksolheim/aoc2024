@@ -9,12 +9,12 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		6E1A18932CFCB88C00BE1DC9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -22,9 +22,22 @@
 		6E1A18952CFCB88C00BE1DC9 /* adventofcode2024 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = adventofcode2024; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		6E1A18A62CFCB96100BE1DC9 /* Exceptions for "adventofcode2024" folder in "Copy Files" phase from "adventofcode2024" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 6E1A18932CFCB88C00BE1DC9 /* CopyFiles */;
+			membershipExceptions = (
+				data.txt,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6E1A18972CFCB88C00BE1DC9 /* adventofcode2024 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6E1A18A62CFCB96100BE1DC9 /* Exceptions for "adventofcode2024" folder in "Copy Files" phase from "adventofcode2024" target */,
+			);
 			path = adventofcode2024;
 			sourceTree = "<group>";
 		};
