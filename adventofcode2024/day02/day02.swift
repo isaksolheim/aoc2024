@@ -1,5 +1,10 @@
 import Foundation
 
+struct UnsafeReport {
+    var report: [Int]
+    var i: Int
+}
+
 func day02() {
     let fileName = "day02.txt"
     let currentPath = FileManager.default.currentDirectoryPath
@@ -13,6 +18,8 @@ func day02() {
 
         var safeCount = 0
 
+        var unsafeReports: [UnsafeReport] = []
+
         for report in data {
             let formatted = report.map { Int($0)! }
 
@@ -24,10 +31,12 @@ func day02() {
                     let diff = abs(num - prev)
 
                     if diff < 1 || diff > 3 {
+                        unsafeReports.append(UnsafeReport(report: formatted, i: index))
                         break
                     }
 
                     if diff == 0 {
+                        unsafeReports.append(UnsafeReport(report: formatted, i: index))
                         break
                     }
 
@@ -37,10 +46,12 @@ func day02() {
                     } else {
                         if forward {
                             if num > formatted[index + 1] {
+                                unsafeReports.append(UnsafeReport(report: formatted, i: index))
                                 break
                             }
                         } else {
                             if num < formatted[index + 1] {
+                                unsafeReports.append(UnsafeReport(report: formatted, i: index))
                                 break
                             }
                         }
@@ -57,7 +68,63 @@ func day02() {
             }
         }
 
-        print(safeCount)
+        print("first safe count: \(safeCount)")
+
+        for report in unsafeReports {
+            var safe = 0
+
+            for (index, _) in report.report.enumerated() {
+                print(index)
+                var formatted = report.report
+                formatted.remove(at: index)
+
+                var prev = -1
+                var forward = true
+
+                for (index, num) in formatted.enumerated() {
+                    if prev != -1 {
+                        let diff = abs(num - prev)
+
+                        if diff < 1 || diff > 3 {
+                            break
+                        }
+
+                        if diff == 0 {
+                            break
+                        }
+
+                        if index == formatted.count - 1 {
+                            prev = -1
+                            safe += 1
+                        } else {
+                            if forward {
+                                if num > formatted[index + 1] {
+                                    break
+                                }
+                            } else {
+                                if num < formatted[index + 1] {
+                                    break
+                                }
+                            }
+                        }
+                    } else {
+                        if num < formatted[index + 1] {
+                            forward = true
+                        } else {
+                            forward = false
+                        }
+                    }
+
+                    prev = num
+                }
+            }
+
+            if safe > 0 {
+                safeCount += 1
+            }
+        }
+
+        print("final safe count: \(safeCount)")
 
     } catch {
         print("error: \(error.localizedDescription)")
