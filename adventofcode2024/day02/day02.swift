@@ -74,7 +74,6 @@ func day02() {
             var safe = 0
 
             for (index, _) in report.report.enumerated() {
-                print(index)
                 var formatted = report.report
                 formatted.remove(at: index)
 
