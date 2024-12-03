@@ -1,4 +1,4 @@
 import Foundation
 
-// day01()
-day02()
+day01()
+// day02()

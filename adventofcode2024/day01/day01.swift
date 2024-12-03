@@ -10,24 +10,22 @@ func day01() {
         let lines = content.components(separatedBy: .newlines)
         let dataPoints = lines.filter { !$0.isEmpty }
 
-        var left = dataPoints.map { Int($0.split(separator: "   ").first!)! }.sorted()
-        var right = dataPoints.map { Int($0.split(separator: "   ").last!)! }.sorted()
+        let left = dataPoints.map { Int($0.split(separator: "   ").first!)! }.sorted()
+        let right = dataPoints.map { Int($0.split(separator: "   ").last!)! }.sorted()
 
         var distances: [Int] = []
         var similarityScore = 0
 
-        for (index, num) in left.enumerated() {
-            distances.append(abs(num - right[index]))
+        for (l, r) in zip(left, right) {
+            distances.append(abs(l - r))
 
-            for secondNum in right {
-                if num == secondNum {
-                    similarityScore += num
-                }
+            for secondNum in right where l == secondNum {
+                similarityScore += l
             }
         }
 
-        print(distances.reduce(0, +))
-        print(similarityScore)
+        print("part 1: \(distances.reduce(0, +))")
+        print("part 2: \(similarityScore)")
     } catch {
         print("error: \(error.localizedDescription)")
     }
